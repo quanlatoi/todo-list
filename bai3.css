@@ -1,0 +1,121 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.contain {
+  width: 100vw;
+  height: 100vh;
+  padding: 10px;
+  background: rgb(72, 173, 99);
+}
+
+.toDo {
+  width: 300px;
+  overflow: auto;
+  background: rgb(232, 232, 232);
+  position: absolute;
+  top: 4%;
+  left: 2%;
+  overflow-y: auto;
+}
+
+.nameList {
+  padding: 10px;
+  line-height: 10px;
+}
+
+.nameList p {
+  font-weight: bold;
+  font-family: sans-serif;
+  font-size: 13px;
+}
+
+
+.listCard{
+  padding: 2px;
+  width: 100%;
+}
+.listCard .tag{
+  margin: 2px;
+  padding: 5px;
+  border: 2px solid white;
+  background: rgb(255, 255, 255);
+  border-radius: 5px;
+}
+
+.listCard .tag:hover{
+  border: 2px solid rgba(0, 0, 0, 0.6);
+  background: rgb(205, 205, 205);
+  transition: 0.3s;
+}
+
+.listCard .tag .father{
+  text-decoration: none;
+  color: black;
+  font-size: 1.1em;
+  font-family: sans-serif;;
+  font-weight: 500;
+  display: flex;
+  position: relative;
+}
+
+.listCard .tag:hover .father .child1::before{
+  content: 'edit';
+  font-size: 12px;
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 50%;
+  right: 1.2%;
+  transform: translate(-50%, -50%);
+}
+
+.listCard .tag .father .child1:hover::before{
+  content: 'edit';
+  text-decoration: underline;
+  font-size: 12px;
+  color: red;
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 50%;
+  right: 1.2%;
+  transform: translate(-50%, -50%);
+}
+
+.addCard {
+  margin: 5px 0 0 0;
+  padding: 10px;
+}
+
+.addCard:hover {
+  background: rgb(199, 199, 199);
+  cursor: pointer;
+}
+
+.addCard:hover a span {
+  text-decoration: underline;
+  color: black;
+}
+
+.addCard a {
+  color: rgb(117, 117, 117);
+  text-decoration: none;
+}
+
+.addCard span {
+  margin: 2px;
+  font-size: 16px;
+}
+
+textarea {
+  overflow: hidden;
+  overflow-wrap: break-word;
+  resize: none;
+  height: 54px;
+  width: 100%;
+  border-radius: 3px;
+  outline-style: none;
+}

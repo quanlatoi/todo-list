@@ -43,7 +43,6 @@ addCard.addEventListener('click', function() {
       var del2 = document.querySelector('.addCard');
       del2.innerHTML = '';
       var addNewCard = document.querySelector('.addCard');
-      //trả lại: "thêm thẻ khác"
       var aStep1 = document.createElement('a');
       addNewCard.appendChild(aStep1);
       aStep1.setAttribute('id', 'addCard');

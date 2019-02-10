@@ -4,11 +4,14 @@
   box-sizing: border-box;
 }
 
+
 .contain {
   width: 100vw;
   height: 100vh;
   padding: 10px;
   background: rgb(72, 173, 99);
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .toDo {
@@ -17,7 +20,7 @@
   background: rgb(232, 232, 232);
   position: absolute;
   top: 4%;
-  left: 2%;
+  left: 10px;
   overflow-y: auto;
 }
 
@@ -30,6 +33,7 @@
   font-weight: bold;
   font-family: sans-serif;
   font-size: 13px;
+  cursor: context-menu;
 }
 
 .listCard {
@@ -109,11 +113,6 @@
   padding: 10px;
 }
 
-.addCard:hover {
-  background: rgb(199, 199, 199);
-  cursor: pointer;
-}
-
 .addCard:hover a span {
   text-decoration: underline;
   color: black;
@@ -129,6 +128,47 @@
   font-size: 16px;
 }
 
+.icon{
+  width: 25px;
+  height: 27px;
+  display: inline-block;
+  position: relative;
+  bottom: -10px;
+  left: 15px;
+}
+
+.icon::after, .icon::before{
+  content: '';
+  background: rgba(0, 0, 0);
+  height: 4px;
+  width: 90%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  border-radius: 5px;
+  transition: 1s all ease;
+}
+.icon::after{
+  transform: rotateZ(45deg);
+  left: 5%;
+  bottom: 50%;
+}
+.icon::before{
+  transform: rotateZ(-45deg);
+  left: 5%;
+  bottom: 50%;
+}
+
+.icon:hover::after{
+  background: rgb(73, 164, 238);
+  transition: 1s;
+  transform: rotate(-45deg);
+}
+.icon:hover::before{
+  background: rgb(73, 164, 238);
+  transition: 1s;
+  transform: rotate(45deg);
+}
+
 
 textarea {
   overflow: hidden;
@@ -140,16 +180,28 @@ textarea {
   outline-style: none;
 }
 
-input {
+#btn {
   padding: 5px;
-  border: 2px solid rgb(255, 118, 117);
-  background-color: rgb(244, 142, 141);
+  border: 2px solid rgb(130, 169, 199);
+  background-color: rgb(130, 169, 199);
   border-radius: 5px;
   transition: 1s all ease;
   outline-style: none;
 }
 
-input:hover{
+
+#btn:hover{
   color: rgb(255, 255, 255);
   cursor: pointer;
+}
+
+
+.process{
+  width: 300px;
+  overflow: auto;
+  background: rgb(232, 232, 232);
+  position: absolute;
+  overflow-y: auto;
+  top: 4%;
+  left: 350px;
 }

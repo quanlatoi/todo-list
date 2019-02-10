@@ -6,6 +6,8 @@
     <link rel="icon" type="image/png" href="E:\Picture\Life is a long lesson in humility..png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" href="bai3.css">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+
   </head>
   <body>
     <div class="contain">
@@ -14,8 +16,8 @@
           <p>Những Việc Cần Làm</p>
         </div>
         <!-- End nameList -->
-        <div class="listCard">
-            <div class="tag">
+        <div id="div1" class="listCard" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <div class="tag" id="drag1" draggable="true" ondragstart="drag(event)">
               <a class="father" href="#">
                 <span class="child1"></span>
                 <span class="child2">demo</span>
@@ -24,14 +26,36 @@
         </div>
         <!-- End listCard -->
         <div class="addCard">
-          <a id="addCard" href="#">
+          <a id="yasuo" href="#">
             <span><i class="fas fa-plus"></i></span>
             <span>Thêm thẻ khác</span>
+          </a>
+          <a id='teemo' href="#" style="display: none;">
+            <textarea placeholder="Nhập tiêu đề cho thẻ này..."></textarea>
+            <input id="btn" type="button" value="Thêm thẻ">
+            <div class="icon"></div>
           </a>
         </div>
         <!-- End addCard -->
       </div>
-      <!-- End toDo -->
+      <!-- End task toDo -->
+
+      <div class="process">
+        <div class="nameList">
+          <p>Những việc đang xử lý</p>
+        </div>
+        <!-- End nameList -->
+        <div class="listCard" id="div2"  ondrop="drop(event)" ondragover="allowDrop(event)">
+          <div class="tag" >
+            <a class="father" href="#">
+              <span class="child1"></span>
+              <span class="child2">Demo1</span>
+            </a>
+          </div>
+        </div>
+        <!-- End List card -->
+      </div>
+      <!-- End task done -->
     </div>
     <script src="bai3.js" charset="utf-8"></script>
   </body>

@@ -13,12 +13,12 @@
     <div class="contain">
       <div class="toDo">
         <div class="nameList">
-          <p>Những Việc Cần Làm</p>
+          <p>List To Do</p>
         </div>
         <!-- End nameList -->
-        <div id="div1" class="listCard" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="tag" id="drag1" draggable="true" ondragstart="drag(event)">
-              <a class="father" href="#">
+        <div class="listCard" style>
+            <div class="tag">
+              <a class="father" href="#" id="drag1" draggable="true">
                 <span class="child1"></span>
                 <span class="child2">demo</span>
               </a>
@@ -26,11 +26,11 @@
         </div>
         <!-- End listCard -->
         <div class="addCard">
-          <a id="yasuo" href="#">
+          <a id="add" href="#">
             <span><i class="fas fa-plus"></i></span>
-            <span>Thêm thẻ khác</span>
+            <span>Add New Card</span>
           </a>
-          <a id='teemo' href="#" style="display: none;">
+          <a id='text' href="#" style="display: none;">
             <textarea placeholder="Nhập tiêu đề cho thẻ này..."></textarea>
             <input id="btn" type="button" value="Thêm thẻ">
             <div class="icon"></div>
@@ -42,11 +42,11 @@
 
       <div class="process">
         <div class="nameList">
-          <p>Những việc đang xử lý</p>
+          <p>Process</p>
         </div>
         <!-- End nameList -->
-        <div class="listCard" id="div2"  ondrop="drop(event)" ondragover="allowDrop(event)">
-          <div class="tag" >
+        <div class="listCard" style>
+          <div class="tag">
             <a class="father" href="#">
               <span class="child1"></span>
               <span class="child2">Demo1</span>

@@ -1,19 +1,24 @@
-var addCard = document.getElementById('yasuo');
+﻿//tìm và sửa lại các QUERYSELECTOR, có thể thay bằng id hoặc className
+//lên ý tưởng lại cho phần kéo thả
+//lên ý tưởng cho phần tạo thẻ div a tạm thời.
+
+
+var addCard = document.getElementById('add');
 addCard.addEventListener('click', function() {
-  var showTextArea = document.getElementById('yasuo');
+  var showTextArea = document.getElementById('add');
   showTextArea.setAttribute('style', 'display: none');
-  var hiddenYasuo = document.getElementById('teemo');
-  hiddenYasuo.removeAttribute('style', 'display: block');
+  var hiddenAdd = document.getElementById('text');
+  hiddenAdd.removeAttribute('style', 'display: block');
   var btn = document.getElementById('btn');
   //add event cho thẻ input button
   btn.addEventListener('click', btnClick);
   //add event cho thẻ div chứa icon X
   var iconX = document.querySelector('.icon');
   iconX.addEventListener('click', function() {
-    var showYasuo = document.getElementById('yasuo');
-    showYasuo.removeAttribute('style', 'display: none');
-    var hiddenTeemo = document.getElementById('teemo');
-    hiddenTeemo.setAttribute('style', 'display: none');
+    var showAdd = document.getElementById('add');
+    showAdd.removeAttribute('style', 'display: none');
+    var hiddenText = document.getElementById('text');
+    hiddenText.setAttribute('style', 'display: none');
   });
 });
 
@@ -40,12 +45,22 @@ function btnClick() {
     span2.setAttribute('class', 'child2');
     span2.innerHTML = text;
     //trả về giao diện thêm thẻ ban đầu
-    var showYasuo = document.getElementById('yasuo');
-    showYasuo.removeAttribute('style', 'display: none');
-    var hiddenTeemo = document.getElementById('teemo');
-    hiddenTeemo.setAttribute('style', 'display: none');
+    var showAdd = document.getElementById('add');
+    showAdd.removeAttribute('style', 'display: none');
+    var hiddenText = document.getElementById('text');
+    hiddenText.setAttribute('style', 'display: none');
     document.querySelector('textarea').value = '';
   }
+}
+
+
+document.getElementById('drag1').addEventListener('dragstart', drag);
+for(const card of document.getElementsByClassName('listCard')){
+    card.addEventListener('dragenter', dragEnter);
+    card.addEventListener('dragleave', dragLeave);
+    card.addEventListener('dragover', dragOver);
+    card.addEventListener('drop', drop);
+    card.addEventListener('dragend', dragEnd);
 }
 
 function allowDrop(ev) {
@@ -53,7 +68,26 @@ function allowDrop(ev) {
 }
 
 function drag(ev) {
+  ev.dataTransfer.dropEffect= 'move'
   ev.dataTransfer.setData('text', ev.target.id);
+}
+
+function dragEnd(ev){
+    this.style= 'border: 2px solid black'
+}
+
+function dragEnter(ev){
+  ev.preventDefault();
+  this.style ='border: 2px solid red'
+}
+
+function dragLeave(ev){
+  this.style = ''
+}
+
+function dragOver(ev){
+  ev.preventDefault();
+  ev.dataTransfer.dropEffect = "move"
 }
 
 function drop(ev) {

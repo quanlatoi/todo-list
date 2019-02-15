@@ -6,19 +6,18 @@
     <link rel="icon" type="image/png" href="E:\Picture\Life is a long lesson in humility..png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" href="bai3.css">
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
   <body>
     <div class="contain">
-      <div class="toDo">
+      <div class="toDo a">
         <div class="nameList">
           <p>List To Do</p>
         </div>
         <!-- End nameList -->
-        <div class="listCard" style>
+        <div class="listCard">
             <div class="tag">
-              <a class="father" href="#" id="drag1" draggable="true">
+              <a class="father" href="#" id="dragDemo1" draggable="true">
                 <span class="child1"></span>
                 <span class="child2">demo</span>
               </a>
@@ -40,20 +39,39 @@
       </div>
       <!-- End task toDo -->
 
-      <div class="process">
+      <div class="process a">
         <div class="nameList">
           <p>Process</p>
         </div>
         <!-- End nameList -->
-        <div class="listCard" style>
+        <div class="listCard">
           <div class="tag">
-            <a class="father" href="#">
+            <a class="father" id='dragDemo2' href="#">
               <span class="child1"></span>
               <span class="child2">Demo1</span>
             </a>
           </div>
         </div>
         <!-- End List card -->
+        <div class="footList"></div>
+      </div>
+      <!-- End task process -->
+
+      <div class="done a">
+        <div class="nameList">
+          <p>Done</p>
+        </div>
+        <!-- End nameList -->
+        <div class="listCard">
+          <div class="tag">
+            <a class="father" id='dragDemo2' href="#">
+              <span class="child1"></span>
+              <span class="child2">Demo2</span>
+            </a>
+          </div>
+        </div>
+        <!-- End List card -->
+        <div class="footList"></div>
       </div>
       <!-- End task done -->
     </div>

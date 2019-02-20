@@ -4,14 +4,15 @@
   box-sizing: border-box;
 }
 
-
 .contain {
-  width: 100vw;
+  width: auto;
   height: 100vh;
   padding: 10px;
   background: rgb(72, 173, 99);
   display: flex;
+  overflow: auto;
   flex-wrap: wrap;
+  position: relative;
 }
 
 .toDo {
@@ -103,10 +104,9 @@
   opacity: 1;
 }
 
-.listCard .tag .father .child2{
+.listCard .tag .father .child2 {
   padding: 0 20px 0 0;
 }
-
 
 .addCard {
   margin: 5px 0 0 0;
@@ -128,7 +128,7 @@
   font-size: 16px;
 }
 
-.icon{
+.icon {
   width: 25px;
   height: 27px;
   display: inline-block;
@@ -137,7 +137,7 @@
   left: 15px;
 }
 
-.icon::after, .icon::before{
+.icon::after, .icon::before {
   content: '';
   background: rgba(0, 0, 0);
   height: 4px;
@@ -147,28 +147,30 @@
   border-radius: 5px;
   transition: 1s all ease;
 }
-.icon::after{
+
+.icon::after {
   transform: rotateZ(45deg);
   left: 5%;
   bottom: 50%;
 }
-.icon::before{
+
+.icon::before {
   transform: rotateZ(-45deg);
   left: 5%;
   bottom: 50%;
 }
 
-.icon:hover::after{
+.icon:hover::after {
   background: rgb(73, 164, 238);
   transition: 1s;
   transform: rotate(-45deg);
 }
-.icon:hover::before{
+
+.icon:hover::before {
   background: rgb(73, 164, 238);
   transition: 1s;
   transform: rotate(45deg);
 }
-
 
 textarea {
   overflow: hidden;
@@ -181,22 +183,40 @@ textarea {
 }
 
 #btn {
+  position: relative;
+  color: white;
+  font-size: 14px;
+  font-family: sans-serif;
+  margin: 0 0;
   padding: 5px;
-  border: 2px solid rgb(130, 169, 199);
-  background-color: rgb(130, 169, 199);
-  border-radius: 5px;
+  border: none;
+  background: rgba(0, 0, 0, 0.8);
+  font-weight: 600;
+  text-transform: uppercase;
+  overflow: hidden;
   transition: 1s all ease;
-  outline-style: none;
-}
-
-
-#btn:hover{
-  color: rgb(255, 255, 255);
+  z-index: 1;
   cursor: pointer;
 }
 
+#btn::before {
+  content: "";
+  background: rgb(73, 164, 238);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  height: 0;
+  width: 100%;
+  z-index: -1;
+  transition: all 0.6s ease;
+}
 
-.process{
+#btn:hover::before {
+  height: 300%;
+}
+
+.process {
   width: 300px;
   overflow: auto;
   background: rgb(232, 232, 232);
@@ -206,7 +226,7 @@ textarea {
   left: 350px;
 }
 
-.done{
+.done {
   width: 300px;
   overflow: hidden;
   background: rgb(232, 232, 232);
@@ -216,7 +236,7 @@ textarea {
   left: 700px;
 }
 
-.footList{
+.footList {
   width: 100%;
   height: 20px;
 }

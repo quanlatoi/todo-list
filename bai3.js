@@ -1,7 +1,3 @@
-//tìm và sửa lại các QUERYSELECTOR, có thể thay bằng id hoặc className
-//lên ý tưởng lại cho phần kéo thả
-//lên ý tưởng cho phần tạo thẻ div a tạm thời.
-
 
 var addCard = document.getElementById('add');
 addCard.addEventListener('click', function() {
@@ -19,6 +15,7 @@ addCard.addEventListener('click', function() {
     showAdd.removeAttribute('style', 'display: none');
     var hiddenText = document.getElementById('text');
     hiddenText.setAttribute('style', 'display: none');
+    document.querySelector('textarea').value = '';
   });
 });
 var idName = 1;
@@ -61,21 +58,19 @@ function btnClick() {
 
 document.getElementById('dragDemo1').addEventListener('dragstart', drag);
 document.getElementById('dragDemo2').addEventListener('dragstart', drag);
+document.getElementById('dragDemo3').addEventListener('dragstart', drag);
 for (const card of document.getElementsByClassName('listCard')) {
   card.addEventListener('dragstart', dragStart);
-  // card.addEventListener('dragenter', dragEnter);
   card.addEventListener('dragleave', dragLeave);
   card.addEventListener('dragover', dragOver);
   card.addEventListener('drag', drag);
   card.addEventListener('drop', drop);
   card.addEventListener('dragend', dragEnd);
 }
-// var _el;
 
 
 function dragStart(ev) {
   ev.dataTransfer.setData("text/plain", ev.target.id);
-  // _el = ev.target;
 }
 
 function drag(ev) {
@@ -83,25 +78,13 @@ function drag(ev) {
   ev.dataTransfer.setData('text', ev.target.id);
 }
 
-// function dragEnter(ev) {
-//   ev.preventDefault();
-//   // this.style = 'border-bottom: 20px solid red';
-//
-// }
-
 function dragLeave(ev) {
   this.style = 'transition: 0.5s';
   ev.dataTransfer.dropEffect = 'move';
 }
 
 function dragOver(ev) {
-  // if (isBefore(_el, ev.target)) {
-  //   ev.target.parentNode.insertBefore(_el, ev.target);
-  //   console.log(div.appendChild(_el));
-  // } else {
-  //   ev.target.parentNode.insertBefore(_el, ev.target.nextSibling);
-  //   console.log(div.appendChild(_el));
-  // }
+
   ev.preventDefault();
   ev.dataTransfer.dropEffect = "move";
   var a = document.getElementsByClassName('a');
@@ -132,14 +115,5 @@ function dragEnd(ev) {
       checkTag[i].remove();
     }
   }
-  // _el = null;
   this.style = '';
 }
-
-// function isBefore(el1, el2) {
-//   if (el2.parentNode === el1.parentNode)
-//     for (var cur = el1.previousSibling; cur; cur = cur.previousSibling)
-//       if (cur === el2)
-//         return true;
-//   return false;
-// }

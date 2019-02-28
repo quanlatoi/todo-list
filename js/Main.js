@@ -3,8 +3,8 @@ var divContain = document.querySelector('.contain');
 var toDoContainer = new Container('toDo');
 var processContainer = new Container('Process');
 var doneContainer = new Container('done');
-var newTag = new Tag('tag', 'demo');
-var newTag1 = new Tag('tag', 'demo1');
+var newTag = new Tag('tag', 'demo', 1);
+var newTag1 = new Tag('tag', 'demo1', 2);
 var idAdd = new _addCard('add');
 var idText = new _createValue('text');
 

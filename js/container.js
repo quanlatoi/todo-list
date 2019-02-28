@@ -31,12 +31,12 @@ class Container {
     /*
               Event DnD
     */
-    this.listCard.addEventListener('dragstart', this.dragStart, false);
-    this.listCard.addEventListener('dragenter', this.dragEnter, false);
-    this.listCard.addEventListener('dragover', this.dragOver, false);
-    this.listCard.addEventListener('dragleave', this.dragLeave, false);
-    this.listCard.addEventListener('drop', this.drop, false);
-    this.listCard.addEventListener('dragend', this.dragEnd, false);
+    // this.listCard.addEventListener('dragstart', this.dragStart, false);
+    // this.listCard.addEventListener('dragenter', this.dragEnter, false);
+    // this.listCard.addEventListener('dragover', this.dragOver, false);
+    // this.listCard.addEventListener('dragleave', this.dragLeave, false);
+    // this.listCard.addEventListener('drop', this.drop, false);
+    // this.listCard.addEventListener('dragend', this.dragEnd, false);
 
   }
 

@@ -1,5 +1,6 @@
+var dragSrcEl = null;
 class Tag {
-  constructor(id, content) {
+  constructor(id, content, orderID) {
     // <div class="tag">
     //     <a class="father" id='dragDemo2' href="#">
     //       <span class="child1"></span>
@@ -24,12 +25,86 @@ class Tag {
     this.a.appendChild(this.span1);
     this.a.appendChild(this.span2);
 
-    this.a.addEventListener('dragstart', this.drag);
+    //test
+    this.div.setAttribute('draggable', 'true');
+    this.div.setAttribute('order-id', orderID);
+
+    this.div.addEventListener('dragstart', this.dragStart, false);
+    this.div.addEventListener('dragover', this.dragOver, false);
+    this.div.addEventListener('drop', this.drop, false);    
+    this.div.addEventListener('dragend', this.dragEnd, false);    
   }
 
-  drag(ev) {
-    ev.dataTransfer.dropEffect = 'move';
-    ev.dataTransfer.setData('text', ev.target.id);
+  dragStart(e){
+    this.className += " dragStartClass";
+    dragSrcEl = this;
+    
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/html', this.innerHTML);
   }
 
+  dragOver(e){
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    return false;
+  }
+
+  drop(e){    
+    var listItems = document.querySelectorAll('.tag');
+    
+    var dragOrderId = parseInt(dragSrcEl.getAttribute('order-id'));
+    var dragTargetOrderId = parseInt(this.getAttribute('order-id'));
+    var tempThis = this;
+    //Không làm bất cứ điều gì nếu thả xuống cùng 1 column mà ta đang kéo
+    //và kiểm tra, nếu 1 điểm khác biệt thì sau đó sẽ không thực hiện
+
+    if(dragSrcEl != this){
+      var tempThis = this;
+      function makeNewOrderIds(tempThis){
+        dragSrcEl.setAttribute('order-id', dragOrderId);        
+        tempThis.setAttribute('order-id', dragTargetOrderId);
+
+        // tìm vị trí giữa 2 thẻ tag cũ và mới và set new ids
+        // sự khác biệt trong khi di chuyển lên hoặc xuống (if - else)
+
+        if(dragOrderId < dragTargetOrderId){
+          for(var i = dragOrderId; i < dragTargetOrderId; i++){
+            listItems[i].setAttribute("order-id", i);
+            dragSrcEl.setAttribute('order-id', dragTargetOrderId);
+          }
+        }
+        else{
+          for(var i = dragTargetOrderId; i < dragOrderId; i++){
+            listItems[i].setAttribute('order-id', i + 1);
+            console.log(listItems[i].getAttribute('order-id'));
+            dragSrcEl.setAttribute('order-id', dragTargetOrderId);
+            console.log(dragSrcEl.getAttribute('order-id'));
+
+          }
+        }
+      };
+              
+      function reOrder(listItems){
+        listItems = [].slice.call(listItems, 0);
+        listItems.sort(function(a, b){
+          a = parseInt(a.getAttribute('order-id'));
+          b = parseInt(b.getAttribute('order-id'));
+          console.log(a);
+          console.log(b);
+          
+          return a - b;
+        });
+        var parent = document.querySelector('.listCard');
+        // parent.innerHTML = "";
+        for(var i = 0; i < listItems.length; i++){          
+          parent.appendChild(listItems[i]);   
+          console.log(listItems[i]);    
+        }          
+      };
+      
+      makeNewOrderIds(tempThis);
+      dragSrcEl.classList.remove('dragStartClass');
+      reOrder(listItems);
+    }
+  }
 }

@@ -1,10 +1,9 @@
 var divContain = document.querySelector('.contain');
 //    khai báo các constructor    \\
-var toDoContainer = new Container('toDo');
+var toDoContainer = new Container('To do');
 var processContainer = new Container('Process');
-var doneContainer = new Container('done');
+var doneContainer = new Container('Done');
 var newTag = new Tag('tag', 'demo', 1);
-var newTag1 = new Tag('tag', 'demo1', 2);
 var idAdd = new _addCard('add');
 var idText = new _createValue('text');
 
@@ -17,7 +16,6 @@ processContainer.setposition('350px');
 doneContainer.setposition('675px');
 
 toDoContainer.addNewTag(newTag.div);
-toDoContainer.addNewTag(newTag1.div);
 
 toDoContainer.addElementA(idAdd.a);
 toDoContainer.addElementA(idText.a);
@@ -28,11 +26,12 @@ document.querySelector('.add').addEventListener('click', function() {
   hiddenElemnt(idAdd.a);
   toDoContainer.addElementA(idText.a);
 });
-
+orderId = 1;
 document.getElementById('btn').addEventListener('click', function() {
   var check = idText.textarea.value;
+  orderId++;
   if (check.length > 0) {
-    newTag = new Tag('tag', check);
+    newTag = new Tag('tag', check, orderId);
     toDoContainer.addElementA(idAdd.a);
     toDoContainer.addNewTag(newTag.div);
     iconX();

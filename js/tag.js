@@ -15,7 +15,7 @@ class Tag {
 
     this.div.setAttribute('class', id);
     this.a.setAttribute('class', 'father');
-    this.a.setAttribute('draggable', 'true');
+    // this.a.setAttribute('draggable', 'true');
     // this.a.setAttribute('id', 'drag');
     this.span2.setAttribute('class', 'child2');
     this.span1.setAttribute('class', 'child1');
@@ -36,7 +36,7 @@ class Tag {
   }
 
   dragStart(e){
-    this.className += " dragStartClass";
+    // this.className += " dragStartClass";
     dragSrcEl = this;
     
     e.dataTransfer.effectAllowed = 'move';
@@ -76,34 +76,26 @@ class Tag {
         else{
           for(var i = dragTargetOrderId; i < dragOrderId; i++){
             listItems[i].setAttribute('order-id', i + 1);
-            console.log(listItems[i].getAttribute('order-id'));
             dragSrcEl.setAttribute('order-id', dragTargetOrderId);
-            console.log(dragSrcEl.getAttribute('order-id'));
-
           }
         }
       };
               
       function reOrder(listItems){
-        listItems = [].slice.call(listItems, 0);
-        listItems.sort(function(a, b){
-          a = parseInt(a.getAttribute('order-id'));
-          b = parseInt(b.getAttribute('order-id'));
-          console.log(a);
-          console.log(b);
-          
-          return a - b;
+        var tempListItems = listItems;
+        tempListItems = [].slice.call(listItems, 0);        
+        tempListItems.sort(function(a, b){
+          return a.getAttribute("order-id") - b.getAttribute("order-id");
         });
         var parent = document.querySelector('.listCard');
         // parent.innerHTML = "";
-        for(var i = 0; i < listItems.length; i++){          
-          parent.appendChild(listItems[i]);   
-          console.log(listItems[i]);    
+        for(var i = 0; i < tempListItems.length; i++){
+          parent.appendChild(tempListItems[i]);    
         }          
       };
       
       makeNewOrderIds(tempThis);
-      dragSrcEl.classList.remove('dragStartClass');
+      // dragSrcEl.classList.remove('dragStartClass');
       reOrder(listItems);
     }
   }

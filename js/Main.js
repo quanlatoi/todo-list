@@ -6,10 +6,12 @@ var doneContainer = new Container('Done');
 var newTag = new Tag('tag', 'demo', 1);
 var idAdd = new _addCard('add');
 var idText = new _createValue('text');
+var popOver = new PopOver();
 
 divContain.appendChild(toDoContainer.container);
 divContain.appendChild(processContainer.container);
 divContain.appendChild(doneContainer.container);
+divContain.appendChild(popOver.popOver);
 //  set vị trí cho các container  \\
 toDoContainer.setposition('25px');
 processContainer.setposition('350px');
@@ -20,7 +22,7 @@ toDoContainer.addNewTag(newTag.div);
 toDoContainer.addElementA(idAdd.a);
 toDoContainer.addElementA(idText.a);
 
-//Tạo thêm thẻ mới...
+// // Tạo thêm thẻ mới...
 document.querySelector('.add').addEventListener('click', function() {
   showElement(idText.a);
   hiddenElemnt(idAdd.a);
@@ -58,5 +60,3 @@ function showElement(element) {
 function hiddenElemnt(element) {
   return element.classList.add('display');
 }
-
-//kéo thả

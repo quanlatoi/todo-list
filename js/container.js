@@ -16,7 +16,7 @@ class Container {
     this.container = document.createElement('div');
     this.nameList = document.createElement('div');
     this.listCard = document.createElement('div');
-    this.addCard = document.createElement('div');
+    this.addCard = document.createElement('div'); 
 
     this.container.setAttribute('class', 'container');
     this.nameList.setAttribute('class', 'nameList');
@@ -37,6 +37,7 @@ class Container {
     this.listCard.addEventListener('dragleave', this.dragLeave, false);
     this.listCard.addEventListener('drop', this.drop, false);
 
+    this.listCard.addEventListener('click', this.showModal);
   }
 
   setposition(left) {
@@ -47,7 +48,7 @@ class Container {
     this.listCard.appendChild(newTag);
   }
 
-  addElementA(elementA) {
+  addElementA(elementA) {    
     this.addCard.appendChild(elementA);
   }
 
@@ -98,6 +99,19 @@ class Container {
     dragElem.classList.remove('dragElem');    
     this.classList.remove('over');
     return false;
+  }
+
+  showModal(e){
+    var modalContent = document.querySelector('.modal-content');
+    var modal = document.querySelector('.modal');
+    var title;
+    if(e.target.classList[0] == 'father' || e.target.classList[0] == 'tag' || e.target.classList[0] == 'child1'){
+      title = e.target.textContent;       
+      let modal2 = new _ModalTitle(title);  
+      modal.classList.remove('hide-modal');
+      modalContent.appendChild(modal2.cardDetailWindow);
+      modalContent.appendChild(modal2.closeBtn);
+    }
   }
 }
 

@@ -1,13 +1,6 @@
 var dragSrcEl = null;
 class Tag {
   constructor(id, content, orderID) {
-    // <div class="tag">
-    //     <a class="father" id='dragDemo2' href="#">
-    //       <span class="child1"></span>
-    //       <span class="child2">content</span>
-    //     </a>
-    // </div>
-
     this.div = document.createElement('div');
     this.a = document.createElement('a');
     this.span1 = document.createElement('span');
@@ -15,8 +8,6 @@ class Tag {
 
     this.div.setAttribute('class', id);
     this.a.setAttribute('class', 'father');
-    // this.a.setAttribute('draggable', 'true');
-    // this.a.setAttribute('id', 'drag');
     this.span2.setAttribute('class', 'child2');
     this.span1.setAttribute('class', 'child1');
     this.span2.textContent = content;
@@ -24,7 +15,7 @@ class Tag {
     this.div.appendChild(this.a);
     this.a.appendChild(this.span1);
     this.a.appendChild(this.span2);
-
+    
     //test
     this.div.setAttribute('draggable', 'true');
     this.div.setAttribute('order-id', orderID);
@@ -32,7 +23,7 @@ class Tag {
     this.div.addEventListener('dragstart', this.dragStart, false);
     this.div.addEventListener('dragover', this.dragOver, false);
     this.div.addEventListener('drop', this.drop, false);    
-    this.div.addEventListener('dragend', this.dragEnd, false);    
+    this.div.addEventListener('dragend', this.dragEnd, false); 
   }
 
   dragStart(e){
@@ -88,15 +79,14 @@ class Tag {
           return a.getAttribute("order-id") - b.getAttribute("order-id");
         });
         var parent = document.querySelector('.listCard');
-        // parent.innerHTML = "";
         for(var i = 0; i < tempListItems.length; i++){
           parent.appendChild(tempListItems[i]);    
         }          
       };
       
       makeNewOrderIds(tempThis);
-      // dragSrcEl.classList.remove('dragStartClass');
       reOrder(listItems);
     }
   }
+
 }

@@ -86,7 +86,6 @@ class Container {
       e.stopPropagation();
     }
     if (dragElem != this) {
-
       let dropHTML = e.dataTransfer.getData('text/html');
       for (let i = 0; i < dragElem.querySelectorAll('.tag').length; i++) {
         let dom = dragElem.querySelectorAll('.tag')[i];

@@ -7,11 +7,12 @@ class Modal{
         this.modalContent.classList.add('modal-content');
         
         //close button
-        this.closeBtn = document.createElement('a');   
+        this.closeBtn = document.createElement('a');
         this.span = document.createElement('span');
+        this.closeBtn.setAttribute('id', 'closeModal');
         this.closeBtn.classList.add('close-btn');
         this.span.classList.add('fas');
-        this.span.classList.add('fa-times');   
+        this.span.classList.add('fa-times');
         
         this.cardDetailWindow = document.createElement('div');
         this.cardDetailWindow.classList.add('card-detail-window');
@@ -19,7 +20,7 @@ class Modal{
         this.div.appendChild(this.modalContent);
         this.modalContent.appendChild(this.closeBtn);
         this.closeBtn.appendChild(this.span);
-        this.modalContent.appendChild(this.cardDetailWindow);   
+        this.modalContent.appendChild(this.cardDetailWindow);
         
         window.addEventListener('click', this.hideModal);
     }
@@ -30,8 +31,7 @@ class _ModalTitle extends Modal{
         super(title);
         //Title of modal
         this.boxModal = document.createElement('div');
-        this.boxModal.classList.add('box-modal');        
-
+        this.boxModal.classList.add('box-modal');
         this.windowTitle = document.createElement('div');
         this.windowTitle.classList.add('module-title');
         this.windowTitle.classList.add('window-title');
@@ -182,7 +182,7 @@ class _ModalTitle extends Modal{
         this.moduleCmt.appendChild(this.contentBox2);
         this.moduleCmtTitle.appendChild(this.moduleCmtIcon);
         this.moduleCmtTitle.appendChild(this.moduleCmtNameTitle);
-        this.contentBox2.appendChild(this.inputCmt);        
+        this.contentBox2.appendChild(this.inputCmt);
 
         //thêm thẻ vào modal
         this.cardDetailWindow.appendChild(this.boxModal);
@@ -192,18 +192,29 @@ class _ModalTitle extends Modal{
         this.cardDetailWindow.appendChild(this.moduleCmt);
         
         this.iconAddColor.addEventListener('click', this.addNewLabel);
-        
     }
 
     hideModal(e){
         var modal = document.querySelector('.modal-content');
+        var showColor = document.querySelector('.pop-over');
+        
         if(e.target.classList[0] == 'modal'){
+            try {
+                showColor.firstChild.remove();
+            } catch (error) {
+                console.log(error);
+            }
             while(modal.firstChild){
                 modal.firstChild.remove();
             }
             document.querySelector('.modal').classList.add('hide-modal');
+            return;
         }
-        else if(e.target.classList[0] == 'close-btn' || e.target.classList[1] == 'fa-times'){
+        else if(e.target.parentElement.id == 'closeModal'){
+            try {
+                showColor.firstChild.remove();
+            } catch (error) {
+            }
             while(modal.firstChild){
                 modal.firstChild.remove();
             }
@@ -212,16 +223,13 @@ class _ModalTitle extends Modal{
     }
 
     addNewLabel(e){
-        var showColor = document.querySelector('.color-lable');
-        var labelSelected;
-
-        if(e.target == this){
-                 
-            
-        }
-
-        showColor.classList.add(labelSelected);
+        const a = new _popOverSelect();
+        const showColor = document.querySelector('.pop-over');
         
+        var labelSelected = 'card-lable-orange';
+        if(e.target == this){
+            showColor.appendChild(a.popOverChild);
+            return;
+        }
     }
-
 }

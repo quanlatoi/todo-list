@@ -1,14 +1,7 @@
 /*
-  tạo khung:
-      <div class="container">
-      <div class="nameList">
-        <p>List To Do</p>
-      </div>
-      <div class="listCard">
-   ......  list cac tag vao day
-      </div>
-  .......  them task vao day
-    </div>
+  create task (todo- process- done)
+  drag and drop
+  show modal
 */
 var dragElem = null;
 class Container {
@@ -104,13 +97,17 @@ class Container {
     var modalContent = document.querySelector('.modal-content');
     var modal = document.querySelector('.modal');
     var title;
-    if(e.target.classList[0] == 'father' || e.target.classList[0] == 'tag' || e.target.classList[0] == 'child1'){
-      title = e.target.textContent;       
-      let modal2 = new _ModalTitle(title);  
+    if(e.target.classList[0] == 'child2' || e.target.classList[0] == 'father' || e.target.classList[0] == 'tag'){
+      title = e.target.textContent;
+      if(title.length > 25){
+        title = title.split(' ').slice(0, 4).join(' ') + '...';
+      }
+      let modal2 = new _ModalTitle(title);
       modal.classList.remove('hide-modal');
       modalContent.appendChild(modal2.cardDetailWindow);
       modalContent.appendChild(modal2.closeBtn);
     }
+    return;
   }
 }
 

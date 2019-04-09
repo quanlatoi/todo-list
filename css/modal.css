@@ -26,7 +26,6 @@
   font-family: 'Cabin', sans-serif;
   font-weight: 600;
   font-size: 15px;
-  background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
 }
 
@@ -39,6 +38,10 @@
   padding: 0;
   border: 1px solid #888;
   position: relative;
+}
+
+.card-detail-window{
+  overflow: auto;
 }
 
 .close-btn{
@@ -205,33 +208,108 @@
  color for card lables;
 */
 .card-lable-green{
-  background: green;
+  background: green !important;
 }
 
 .card-lable-orange{
-  background: orange;
+  background: orange !important;
 }
 
 .card-lable-red{
-  background: red;
+  background: red !important;
 }
 
 .card-lable-purple{
-  background: purple;
+  background: purple !important;
 }
 
 .card-lable-blue{
-  background: blue;
+  background: blue !important;
 }
 
 .card-lable-sky{
-  background: skyblue;
+  background: skyblue !important;
 }
 
 .card-lable-black{
-  background: black;
+  background: black !important;
 }
 
 .card-lable-yellow{
-  background: yellow;
+  background: yellow !important;
+}
+
+/*
+  style cho popOver
+*/
+.popOver{
+  width: 250px;
+  position: relative;
+}
+.a{
+  position: absolute;
+  top: 20%;
+  left: 24%;
+  z-index: 9999;
+}
+
+.label-pop-over{
+  padding: 5px 10px;
+  background: #fff;
+  box-shadow: 0 8px 16px -4px rgba(9,45,66,.25), 0 0 0 1px rgba(9,45,66,.08);
+}
+
+ul{
+  display: block;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.card-label{
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  margin: 0 0 4px;
+  min-height: 20px;
+  padding: 18px;
+  position: relative;
+}
+.edit-card-label{
+  padding: 20px 0;
+}
+
+.icon-sm{
+  height: 20px;
+  width: 20px;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.icon-check{
+  color: #fff;
+}
+
+.selectable{
+  position: absolute;
+  top: -10px;
+  right: 0px;
+}
+
+.header-pop-over{
+  height: 40px;
+  margin-bottom: 8px;
+  text-align: center;
+  border-bottom: 1px solid rgba(9,45,66,.13);
+}
+
+.header-pop-over-title{
+  color: #000;
+  font-weight: 700;
+  line-height: 40px;
+  margin: 0 12px;
+  padding: 0 32px;
+  white-space: nowrap;
+  z-index: 1;
 }
